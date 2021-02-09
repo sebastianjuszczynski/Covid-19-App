@@ -18,7 +18,7 @@ const updateGlobalStats = async (data) => {
     header.innerHTML = `
     <h1 class="header__h1">Coronavirus App!</h1>
     <p>${date.slice(0, 10)}</p>
-    <h2 class="header__h2">statistics for the whole world:</h2>
+    <h2 class="header__h2">Statistics for the whole world:</h2>
     <p class="header__paragraph">New cases: <span class="header__new-cases">${data.Global.NewConfirmed}</span></p>
     <p class="header__paragraph">Total cases: <span class="header__total-cases">${data.Global.TotalConfirmed}</span></p>
     <p class="header__paragraph">New deaths: <span class="header__new-deaths">${data.Global.NewDeaths}</span></p>
