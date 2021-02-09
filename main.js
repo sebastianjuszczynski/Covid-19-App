@@ -6,6 +6,7 @@ form.addEventListener("submit", e => {
     e.preventDefault();
     const country = form.country.value.trim();
     form.reset();
+    form.country.blur();
     updateCountry(country)
         .then(data => updateCountryStats(data))
         .catch(err => console.log(err));
