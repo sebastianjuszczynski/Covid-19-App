@@ -17,6 +17,7 @@ const updateGlobalStats = async (data) => {
     header.innerHTML = `
     <h1 class="header__h1">Coronavirus App!</h1>
     <p>${date.slice(0, 10)}</p>
+    <h2 class="header__h2">statistics for the whole world:</h2>
     <p class="header__paragraph">New cases: <span class="header__new-cases">${data.Global.NewConfirmed}</span></p>
     <p class="header__paragraph">Total cases: <span class="header__total-cases">${data.Global.TotalConfirmed}</span></p>
     <p class="header__paragraph">New deaths: <span class="header__new-deaths">${data.Global.NewDeaths}</span></p>
@@ -30,6 +31,7 @@ const updateGlobalStats = async (data) => {
 const updateCountryStats = async (data) => {
 
     countryContainer.innerHTML = `
+    <h2 class="header__h2">Statistics for one country:</h2>
     <p class="form__paragraph">New cases: <span>${data.countryDetails.Confirmed - data.countryDetails2.Confirmed}</span></p>
     <p class="form__paragraph">Total cases: <span>${data.countryDetails.Confirmed}</span></p>
     <p class="form__paragraph">New deaths: <span>${data.countryDetails.Deaths - data.countryDetails2.Deaths}</span></p>
@@ -37,7 +39,6 @@ const updateCountryStats = async (data) => {
     <p class="form__paragraph">New recovered: <span>${data.countryDetails.Recovered - data.countryDetails2.Recovered}</span></p>
     <p class="form__paragraph">Total recovered: <span>${data.countryDetails.Recovered}</span></p>
 `
-    console.log(data)
 }
 const updateCountry = async (country) => {
     const countryDetails = await getStats(country);
