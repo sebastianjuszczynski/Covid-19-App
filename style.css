@@ -25,7 +25,7 @@ main {
     color: green;
 }
 input {
-    width: 30vw;
+    width: 75%;
     padding: 5px;
     border-radius: 8px;
 }
