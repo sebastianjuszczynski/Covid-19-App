@@ -29,6 +29,11 @@ input {
     padding: 5px;
     border-radius: 8px;
 }
+@media (max-width: 767px) {
+    input {
+        width: 100%;
+    }
+}
 .header__h1 {
     text-transform: uppercase;
     font-size: 36px;
