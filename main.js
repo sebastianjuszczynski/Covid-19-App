@@ -8,7 +8,7 @@ form.addEventListener("submit", e => {
     form.reset();
     form.country.blur();
     updateCountry(country)
-        .then(data => updateCountryStats(data))
+        .then(data => updateCountryStats(data, country))
         .catch(err => console.log(err));
 })
 
@@ -16,29 +16,29 @@ const updateGlobalStats = async (data) => {
     const date = data.Date.toLocaleString();
 
     header.innerHTML = `
-    <h1 class="header__h1">Coronavirus App!</h1>
+    <h1 class="header__h1">Covid 19 Stats!</h1>
     <p>${date.slice(0, 10)}</p>
     <h2 class="header__h2">Statistics for the whole world:</h2>
-    <p class="header__paragraph">New cases: <span class="header__new-cases">${data.Global.NewConfirmed}</span></p>
-    <p class="header__paragraph">Total cases: <span class="header__total-cases">${data.Global.TotalConfirmed}</span></p>
-    <p class="header__paragraph">New deaths: <span class="header__new-deaths">${data.Global.NewDeaths}</span></p>
-    <p class="header__paragraph">Total deaths: <span class="header__total-deaths">${data.Global.TotalDeaths}</span></p>
-    <p class="header__paragraph">New recovered: <span class="header__new-recovered">${data.Global.NewRecovered}</span></p>
-    <p class="header__paragraph">Total recovered: <span class="header__total-recovered">${data.Global.TotalRecovered}</span></p>
+    <p class="header__paragraph">New cases: <span class="header__cases">${data.Global.NewConfirmed.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
+    <p class="header__paragraph">Total cases: <span class="header__cases">${data.Global.TotalConfirmed.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
+    <p class="header__paragraph">New deaths: <span class="header__deaths">${data.Global.NewDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
+    <p class="header__paragraph">Total deaths: <span class="header__deaths">${data.Global.TotalDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
+    <p class="header__paragraph">New recovered: <span class="header__recovered">${data.Global.NewRecovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
+    <p class="header__paragraph">Total recovered: <span class="header__recovered">${data.Global.TotalRecovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
     
     `
 }
 
-const updateCountryStats = async (data) => {
+const updateCountryStats = async (data, country) => {
 
     countryContainer.innerHTML = `
-    <h2 class="header__h2">Statistics for one country:</h2>
-    <p class="form__paragraph">New cases: <span>${data.countryDetails.Confirmed - data.countryDetails2.Confirmed}</span></p>
-    <p class="form__paragraph">Total cases: <span>${data.countryDetails.Confirmed}</span></p>
-    <p class="form__paragraph">New deaths: <span>${data.countryDetails.Deaths - data.countryDetails2.Deaths}</span></p>
-    <p class="form__paragraph">Total deaths: <span>${data.countryDetails.Deaths}</span></p>
-    <p class="form__paragraph">New recovered: <span>${data.countryDetails.Recovered - data.countryDetails2.Recovered}</span></p>
-    <p class="form__paragraph">Total recovered: <span>${data.countryDetails.Recovered}</span></p>
+    <h2 class="header__h2">Statistics for ${country.replace(/^\w/, (c) => c.toUpperCase())}:</h2>
+    <p class="form__paragraph">New cases: <span class="header__cases">${(data.countryDetails.Confirmed - data.countryDetails2.Confirmed).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
+    <p class="form__paragraph">Total cases: <span class="header__cases">${data.countryDetails.Confirmed.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
+    <p class="form__paragraph">New deaths: <span class="header__deaths">${(data.countryDetails.Deaths - data.countryDetails2.Deaths).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
+    <p class="form__paragraph">Total deaths: <span class="header__deaths">${data.countryDetails.Deaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
+    <p class="form__paragraph">New recovered: <span class="header__recovered">${(data.countryDetails.Recovered - data.countryDetails2.Recovered).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
+    <p class="form__paragraph">Total recovered: <span class="header__recovered">${data.countryDetails.Recovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
 `
 }
 const updateCountry = async (country) => {
