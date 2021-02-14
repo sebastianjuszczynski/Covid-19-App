@@ -31,4 +31,13 @@ input {
 }
 .header__h1 {
     text-transform: uppercase;
+    font-size: 36px;
+}
+img {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
+.header__paragraph-date {
+    font-size: 14px;
 }

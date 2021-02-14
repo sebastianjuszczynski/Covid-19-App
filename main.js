@@ -16,8 +16,8 @@ const updateGlobalStats = async (data) => {
     const date = data.Date.toLocaleString();
 
     header.innerHTML = `
-    <h1 class="header__h1">Covid 19 Stats!</h1>
-    <p>${date.slice(0, 10)}</p>
+    <h1 class="header__h1">Covid 19 Stats! <img src="img/covid-19.svg" alt="covid image"></h1>
+    <p class="header__paragraph-date">${date.slice(0, 10)}</p>
     <h2 class="header__h2">Statistics for the whole world:</h2>
     <p class="header__paragraph">New cases: <span class="header__cases">${data.Global.NewConfirmed.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
     <p class="header__paragraph">Total cases: <span class="header__cases">${data.Global.TotalConfirmed.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
