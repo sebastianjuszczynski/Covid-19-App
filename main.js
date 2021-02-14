@@ -9,7 +9,7 @@ form.addEventListener("submit", e => {
     form.country.blur();
     updateCountry(country)
         .then(data => updateCountryStats(data, country))
-        .catch(err => console.log(err));
+        .catch(err => alert("No data for this country"));
 })
 
 const updateGlobalStats = async (data) => {
@@ -18,7 +18,7 @@ const updateGlobalStats = async (data) => {
     header.innerHTML = `
     <h1 class="header__h1">Covid 19 Stats! <img src="img/covid-19.svg" alt="covid image"></h1>
     <p class="header__paragraph-date">${date.slice(0, 10)}</p>
-    <h2 class="header__h2">Statistics for the whole world:</h2>
+    <h2 class="header__h2">Whole world statistics:</h2>
     <p class="header__paragraph">New cases: <span class="header__cases">${data.Global.NewConfirmed.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
     <p class="header__paragraph">Total cases: <span class="header__cases">${data.Global.TotalConfirmed.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
     <p class="header__paragraph">New deaths: <span class="header__deaths">${data.Global.NewDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
