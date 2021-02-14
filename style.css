@@ -24,3 +24,11 @@ main {
 .header__recovered {
     color: green;
 }
+input {
+    width: 30vw;
+    padding: 5px;
+    border-radius: 8px;
+}
+.header__h1 {
+    text-transform: uppercase;
+}
