@@ -1,0 +1,26 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    background-color: hsl(0, 0%, 20%);
+}
+span {
+    font-weight: bold;
+}
+main {
+    width: 400px;
+    padding: 20px;
+    margin: 0 auto;
+    background-color: hsl(0, 0%, 0%);
+}
+.header__cases {
+    color: orange;
+}
+.header__deaths {
+    color: red;
+}
+.header__recovered {
+    color: green;
+}
