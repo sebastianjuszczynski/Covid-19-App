@@ -8,7 +8,7 @@ form.addEventListener("submit", e => {
     form.reset();
     form.country.blur();
     updateCountry(country)
-        .then(data => updateCountryStats(data, country))
+        .then(data => updateCountryStats(data))
         .catch(err => alert("No data for this country"));
 })
 
@@ -29,16 +29,15 @@ const updateGlobalStats = async (data) => {
 }
 
 const updateCountryStats = async (data) => {
-
+    
     countryContainer.innerHTML = `
-    <h2 class="header__h2">Statistics for ${data.countryDetails.Country}:</h2>
-    <p class="form__paragraph">New cases: <span class="header__cases">${(data.countryDetails.Confirmed - data.countryDetails2.Confirmed).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
-    <p class="form__paragraph">Total cases: <span class="header__cases">${data.countryDetails.Confirmed.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
-    <p class="form__paragraph">New deaths: <span class="header__deaths">${(data.countryDetails.Deaths - data.countryDetails2.Deaths).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
-    <p class="form__paragraph">Total deaths: <span class="header__deaths">${data.countryDetails.Deaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
-    <p class="form__paragraph">New recovered: <span class="header__recovered">${(data.countryDetails.Recovered - data.countryDetails2.Recovered).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
-    <p class="form__paragraph">Total recovered: <span class="header__recovered">${data.countryDetails.Recovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
+    <h2 class="header__h2">Statistics for ${data !== undefined ? data.countryDetails.Country : "Country"}:</h2>
+    <p class="form__paragraph">New cases: <span class="header__cases">${data !== undefined ? (data.countryDetails.Confirmed - data.countryDetails2.Confirmed).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') : "N/A"}</span></p>
+    <p class="form__paragraph">Total cases: <span class="header__cases">${data !== undefined ? data.countryDetails.Confirmed.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') : "N/A"}</span></p>
+    <p class="form__paragraph">New deaths: <span class="header__deaths">${data !== undefined ? (data.countryDetails.Deaths - data.countryDetails2.Deaths).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') : "N/A"}</span></p>
+    <p class="form__paragraph">Total deaths: <span class="header__deaths">${data !== undefined ? data.countryDetails.Deaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') : "N/A"}</span></p>
 `
+
 }
 const updateCountry = async (country) => {
     const countryDetails = await getStats(country);
@@ -54,14 +53,13 @@ const updateCountry = async (country) => {
 const getStats = async (country) => {
     const base = `https://api.covid19api.com/total/country/${country}`;
 
-
-    const response = await fetch(base);
-    const data = await response.json();
-
-   
-
-return data;
-};
+    if (country !== undefined) {
+        const response = await fetch(base);
+        const data = await response.json();  
+        console.log(data)
+    return data;
+    
+}};
 getStats()
     .then(data => updateCountryStats(data))
     .catch(err => console.log(err));
