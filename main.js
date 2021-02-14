@@ -31,7 +31,7 @@ const updateGlobalStats = async (data) => {
 const updateCountryStats = async (data) => {
     
     countryContainer.innerHTML = `
-    <h2 class="header__h2">Statistics for ${data !== undefined ? data.countryDetails.Country : "Country"}:</h2>
+    <h2 class="header__h2">Statistics for ${data !== undefined ? data.countryDetails.Country : "country"}:</h2>
     <p class="form__paragraph">New cases: <span class="header__cases">${data !== undefined ? (data.countryDetails.Confirmed - data.countryDetails2.Confirmed).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') : "N/A"}</span></p>
     <p class="form__paragraph">Total cases: <span class="header__cases">${data !== undefined ? data.countryDetails.Confirmed.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') : "N/A"}</span></p>
     <p class="form__paragraph">New deaths: <span class="header__deaths">${data !== undefined ? (data.countryDetails.Deaths - data.countryDetails2.Deaths).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') : "N/A"}</span></p>
