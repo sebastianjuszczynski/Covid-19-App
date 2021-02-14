@@ -25,7 +25,6 @@ const updateGlobalStats = async (data) => {
     <p class="header__paragraph">Total deaths: <span class="header__deaths">${data.Global.TotalDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
     <p class="header__paragraph">New recovered: <span class="header__recovered">${data.Global.NewRecovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
     <p class="header__paragraph">Total recovered: <span class="header__recovered">${data.Global.TotalRecovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span></p>
-    
     `
 }
 
@@ -58,7 +57,6 @@ const getStats = async (country) => {
 
     const response = await fetch(base);
     const data = await response.json();
-    console.log(data);
 
    
 
