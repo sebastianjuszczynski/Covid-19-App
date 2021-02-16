@@ -14,7 +14,7 @@ form.addEventListener("submit", e => {
 
 const casesCounter = () => {
     const counters = document.querySelectorAll('.counter');
-    const speed = 200;
+    const speed = 50;
     counters.forEach(counter => {
         const updateCount = () => {
             const target = +counter.getAttribute('data-target');
@@ -65,9 +65,11 @@ const updateCountryStats = async (data) => {
         <p class="form__paragraph">Total cases: <span class="header__cases">N/A</span></p>
         <p class="form__paragraph">New deaths: <span class="header__deaths">N/A</span></p>
         <p class="form__paragraph">Total deaths: <span class="header__deaths">N/A</span></p>`
-    }
-    
+    }   
 `
+// console.log(data.countryDetails.Deaths);
+// console.log(data.countryDetails2.Deaths);
+// console.log(data.countryDetails.Deaths - data.countryDetails2.Deaths);
     casesCounter();
 }
 const updateCountry = async (country) => {
