@@ -14,7 +14,7 @@ form.addEventListener("submit", e => {
 
 const casesCounter = () => {
     const counters = document.querySelectorAll('.counter');
-    const speed = 50;
+    const speed = 200;
     counters.forEach(counter => {
         const updateCount = () => {
             const target = +counter.getAttribute('data-target');
@@ -23,7 +23,7 @@ const casesCounter = () => {
             const inc = target / speed;
 
             if (count < target) {
-                counter.innerText = (count + inc).toFixed();
+                counter.innerText = (count + inc).toFixed(2);
                 setTimeout(updateCount, 1);
             } else {
                 counter.innerText = target.toFixed().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
